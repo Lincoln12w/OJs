@@ -36,7 +36,7 @@ int main()
         }
       }
     }
-    if(iter == numbers.end())     // BUG: 不加这句的话逆序输入导致问题
+    if(iter == numbers.end()) 
       numbers.push_back(number);
     callatz(number);
   }

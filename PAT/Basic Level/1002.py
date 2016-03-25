@@ -7,4 +7,4 @@ for n in number:
 
 digits = list(str(sum))
 for digit in digits:
-    print numbers[int(digit) - int(0)], # add , to avoid change line
+    print numbers[int(digit) - int(0)], 		# add ',' to avoid change line

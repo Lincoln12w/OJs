@@ -1,8 +1,6 @@
 # Assume aPbTc:
 #   a * b = c & b >= 1
 
-times = int(raw_input())
-
 def varifyAnswer(answer):
     np = answer.count('P')
     if np != 1:         # XXXTxxx   xxxPxxPxxTxxx
@@ -26,6 +24,8 @@ def varifyAnswer(answer):
         print 'NO'      # not legal, xxxTxxxPxxx
         return
     print 'YES'
+
+times = int(raw_input())
 
 for i in range(0, times):
     answer = raw_input()

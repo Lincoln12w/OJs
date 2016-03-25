@@ -4,41 +4,21 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-int callatz(int n);
-
-int main()
+int main()      /* 1ms 316kB */
 {
     int n;
     cin >> n;
-    if(n > 1000 || n <= 0)
+
+    int cnt = 0;
+    while(n != 1)
     {
-        //cout << "Error Input!\n" << endl;
-        return 0;
+        if(n % 2)
+            n = 3 * n + 1;
+        n /= 2;
+        cnt ++;
     }
 
-    callatz(n);
+    cout << cnt;
 
     return 0;
-}
-
-int callatz(int n)
-{
-    static int count;
-
-    if(n == 1)
-    {
-        cout << count;
-        return 0;
-    }
-    count ++;
-    if(n%2)
-    {
-        callatz((3*n+2)/2);
-    }
-    else
-    {
-        callatz(n/2);
-    }
-
-    return 1;
 }
