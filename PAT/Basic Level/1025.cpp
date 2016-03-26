@@ -52,6 +52,7 @@ int main()
       }
     }
   }
+  
   if(K != 1)
   {
     int start = 0;
@@ -68,6 +69,7 @@ int main()
       end += K;
     }
   }
+
   for(vector<pair<string, int> >::iterator viter=vpsi.begin(); viter != vpsi.end(); viter++)
   {
     cout << viter->first << " " << viter->second << " ";

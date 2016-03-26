@@ -6,17 +6,15 @@ n = len(numbers)
 
 numbers.sort()
 
-max = 0
-
+max = 1
 for i in range(0, n):
-    cnt = 1
-    for j in range(i + 1, n):
-        if numbers[i] * p > numbers[j]:
-            cnt += 1
-    if cnt > max:
-        max = cnt
-    if cnt == n - i:
-        break
+    a = numbers[i] * p
+    j = i + max
+    while j < n:
+        if a < numbers[j]:
+            break
+        j += 1
+    max = j - i
 
 print max
 

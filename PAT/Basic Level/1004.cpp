@@ -1,35 +1,10 @@
 #include <iostream>
 #include <string>
-//#include <vector>
 
 using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
-//using std::vector;
-
-//class students
-//{
- //   string name;
- //   string number;
-//    int grade;
-//public:
-//    students(string name, string number, int grade);
- //   void show();
-//};
-
-//students::students(string nam, string num, int gra)
-//{
- //   name = nam;
- //   number = num;
- //   grade = gra;
-//}
-
-//void students::show()
-//{
-//    cout << name << ' ' << number << ' ' << grade << endl;
-//}
-//#include <vector>
 
 #include <iostream>
 #include <string>
