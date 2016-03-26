@@ -1,85 +1,83 @@
-#include<iostream>
-#include<utility>
-#include<string>
-#include<vector>
+#include <iostream>
+#include <vector>
+#include <map>
 
 using std::cin;
 using std::cout;
-using std::cout;
-using std::vector;
-using std::string;
-using std::pair;
 using std::endl;
+using std::vector;
+using std::map;
 
-class Slist
+typedef struct list{
+    int addr;
+    int value;
+    int next;
+}nodelist;
+
+void print5digit(int addr)          // for replace string with int
 {
-  //string addr;
-  //int n;
-public:
-  pair<string, int> psi;
-  string next;
-  Slist(pair<string, int> pstringint, string nextaddr): psi(pstringint), next(nextaddr) {}
-  bool compare(string add){return (psi.first == add)? true:false;}
-  void add(vector<pair<string, int> > &vec, string & add) { vec.push_back(psi); add = next; }
-};
+    if(addr / 10000 == 0)
+        cout << '0';
+    if(addr / 1000 == 0)
+        cout << '0';
+    if(addr / 100 == 0)
+        cout << '0';
+    if(addr / 10 == 0)
+        cout << '0';
+    cout << addr;
+}
 
 int main()
 {
-  string firstaddr;
-  int total, K;
-  cin >> firstaddr >> total >> K;
-  vector<Slist> vsl;
-  for(int i = 0; i < total; i++)
-  {
-    string s1, s2;
-    int n;
-    pair<string, int> ps;
-    cin >> s1 >> n >> s2;
-    ps=make_pair(s1, n);
-    Slist sl(ps,s2);
-    vsl.push_back(sl);
-  }
-  vector<pair<string ,int> > vpsi;
-  while(firstaddr != "-1")          // sort
-  {
-    for(vector<Slist>::iterator viter = vsl.begin(); viter != vsl.end(); viter++)
+    int firstaddr, total, K;
+    cin >> firstaddr >> total >> K;
+    map<int, nodelist> mlist;
+    for(int i = 0; i < total; i++)
     {
-      if(viter->psi.first == firstaddr)
-      {
-        vpsi.push_back(viter->psi);
-        firstaddr = viter->next;
-        break;
-      }
+        nodelist node;
+        cin >> node.addr >> node.value >> node.next;
+        mlist[node.addr] = node;
     }
-  }
-  
-  if(K != 1)
-  {
-    int start = 0;
-    int end = K;
-    while(total >= end)
-    {
-      for(int i = start,j = end-1; i < j; i++, j--)
-      {
-        pair<string, int> ptemp = vpsi[i];
-        vpsi[i]=vpsi[j];
-        vpsi[j]=ptemp;
-      }
-      start = end;
-      end += K;
-    }
-  }
+    vector<nodelist> vlist;
+    nodelist node = mlist[firstaddr];
 
-  for(vector<pair<string, int> >::iterator viter=vpsi.begin(); viter != vpsi.end(); viter++)
-  {
-    cout << viter->first << " " << viter->second << " ";
-    if(viter != vpsi.end()-1)
+    while(node.next != -1)
     {
-      cout << (viter+1)->first << endl;
+        vlist.push_back(node);
+        node = mlist[node.next];
     }
-    else
-      cout << -1;
-  }
+    vlist.push_back(node);
 
-  return 0;
+    if(K != 0 && K != 1)
+    {
+        int times = vlist.size() / K;
+        for(int i = 0; i < times; i++)
+        {
+            int index1 = i * K;
+            int index2 = (i + 1) * K - 1;
+            while(index1 < index2)
+            {
+                nodelist temp = vlist[index1];
+                vlist[index1] = vlist[index2];
+                vlist[index2] = temp;
+                index1 += 1;
+                index2 -= 1;
+            }
+        }
+    }
+
+    int n = vlist.size() - 1;
+
+    for(int i = 0; i < n; i++)
+    {
+        print5digit(vlist[i].addr);
+        cout << ' ' << vlist[i].value << ' ';
+        print5digit(vlist[i + 1].addr); 
+        cout << endl;
+    }
+
+    print5digit(vlist[n].addr);
+    cout << ' ' << vlist[n].value << ' ' << "-1" << endl;
+    
+    return 0;
 }
