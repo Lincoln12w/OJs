@@ -6,16 +6,19 @@ numberC = ''
 a = len(numberA)
 b = len(numberB)
 if b > a:
-    numberC = numberB[0:b-a]
+    numberC = numberB[0:b - a]
+else:
+	if b < a:								# consider this situation Bad PAT!!!
+		temp = (a - b) * '0' + numberB
+		numberB = temp
+		b = a
 
-c = min(a, b)
-for i in range(0, c):
-    digitA = int(numberA[a - c + i])
-    digitB = int(numberB[b - c + i])
-    if (c - i) % 2:
+for i in range(min(a, b), 0, -1):
+    digitA = int(numberA[a - i])
+    digitB = int(numberB[b - i])
+    if i % 2:
         numberC += digits[(digitA + digitB) % 13]
     else:
-        num = (digitB - digitA + 10) % 10
-        numberC += str(num)
+        numberC += str((digitB - digitA + 10) % 10)
 
 print numberC

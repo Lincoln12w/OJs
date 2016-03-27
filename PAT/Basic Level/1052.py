@@ -19,8 +19,6 @@ while index < cnt:
 
 n = int(raw_input())
 
-print "Are you kidding me? @\/@"
-
 for i in range(0, n):
 	indexs = raw_input().split()
 	flag = 0

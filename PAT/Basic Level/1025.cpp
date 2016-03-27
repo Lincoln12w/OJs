@@ -27,7 +27,7 @@ void print5digit(int addr)          // for replace string with int
     cout << addr;
 }
 
-int main()
+int main2()
 {
     int firstaddr, total, K;
     cin >> firstaddr >> total >> K;
