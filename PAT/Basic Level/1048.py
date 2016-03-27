@@ -18,8 +18,4 @@ for i in range(0, c):
         num = (digitB - digitA + 10) % 10
         numberC += str(num)
 
-while(numberC[0] == '0'):
-    temp = numberC[1:]
-    numberC = temp
-
 print numberC
