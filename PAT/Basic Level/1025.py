@@ -88,7 +88,7 @@ newlist = []
 while node.getAddr() != -1:
     addr = node.getAddr()
     node = nodelist[addr]
-    newlist.append(node)
+    newlist.append(node)                            # sorted list
 
 if shift != 1 and shift != 0:
     times = len(newlist) / shift
