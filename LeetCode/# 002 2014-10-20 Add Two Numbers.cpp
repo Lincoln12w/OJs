@@ -21,7 +21,7 @@ struct ListNode
 {
 	int val;
 	ListNode *next;
-	ListNode(int x) : val(x), next(nullptr) {}
+	ListNode(int x) : val(x), next(0) {}
 };
  
 class Solution {
@@ -29,7 +29,7 @@ class Solution {
 	ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) 
 	{
 		//ListNode list(((l1->val)+(l2->val))%10);	/*never return a pointer to a local value.*/
-		ListNode list(0)
+		ListNode list(0);
 		ListNode * cur = &list;
 		int sum = 0;
 
@@ -59,16 +59,9 @@ int main()
 {
 	ListNode l1(1);
 	ListNode l11(8);
-	//ListNode l12(3);
 	l1.next = &l11;
-	//l11.next = &l12;
-
 	ListNode l2(0);
-	//ListNode l21(2);
-	//ListNode l22(4);
-	//l2.next = &l21;
-	//l21.next = &l22;
-
+	
 	Solution s;
 	ListNode * l3 = s.addTwoNumbers(&l1, &l2);
 
