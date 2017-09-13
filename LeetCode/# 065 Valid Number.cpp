@@ -1,3 +1,5 @@
+// 2017-03-03 
+
 /*	Question:
  *	Validate if a given string is numeric.
  *	

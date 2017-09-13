@@ -1,15 +1,13 @@
+// 2014-10-05 
+
 /*	Question:
- *	Follow up for "Find Minimum in Rotated Sorted Array":
- *	What if duplicates are allowed?
- *
- *	Would this affect the run-time complexity? How and why?
  *	Suppose a sorted array is rotated at some pivot unknown to you beforehand.
  *	
  *	(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).
  *	
  *	Find the minimum element.
  *	
- *	The array may contain duplicates.
+ *	You may assume no duplicate exists in the array.
  */
 
 #include <vector>
@@ -32,9 +30,8 @@ public:
 
 			if(mid == beg)
 				return num[beg] > num[end] ? num[end] : num[beg];
-			if(num[beg] == num[end])
-				beg++;
-			else if(num[mid] >= num[beg])
+			
+			if(num[mid] > num[beg])
 				beg = mid + 1;
 			else
 				end = mid;
@@ -43,13 +40,19 @@ public:
     }
 };
 
+
 int main()
 {
 	vector<int> num;
 
-	num.push_back(3);
-	num.push_back(3);
+	num.push_back(5);
 	num.push_back(1);
+	num.push_back(2);
+	num.push_back(3);
+	num.push_back(4);
+	//num.push_back(1);
+	//num.push_back(2);
+	//num.push_back(1);
 
 	Solution s;
 

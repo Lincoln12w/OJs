@@ -1,3 +1,5 @@
+// 2014-09-23 
+
 /*	Question:
  *	Find the contiguous subarray within an array (containing at least one number) which has the largest product.
  *	
